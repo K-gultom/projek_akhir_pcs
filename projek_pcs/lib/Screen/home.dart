@@ -1,86 +1,83 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
+void main() {
+  runApp(MyApp());
+}
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Aplikasi Pemesanan',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: HomeScreen(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Halaman Home',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: HomePage(),
+    );
+  }
+}
 
-class HomeScreen extends StatelessWidget {
+class _HomePageState extends State<HomePage> {
+  final List<PlayStation> playStations = [
+    PlayStation(name: 'PS4', price: 50),
+    PlayStation(name: 'PS5', price: 80),
+    PlayStation(name: 'PS4 Pro', price: 60),
+    PlayStation(name: 'PS3', price: 40),
+  ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home',
-          style: TextStyle(
-            color: Colors.white
-          ),
-        ),
-        backgroundColor: Colors.blue,
+        title: Text('Halaman Home'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Selamat datang di halaman beranda',
-              style: TextStyle(fontSize: 24),
-            ),
-            // Image.asset('assets/images/ps cover.jpg'), // Gambar untuk beranda
-            ElevatedButton(
-              onPressed: () {
-                // Aksi yang akan dijalankan saat tombol "Pesan Sekarang" ditekan
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OrderScreen()),
+      body: ListView.builder(
+        itemCount: playStations.length,
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 2,
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListTile(
+              leading: Icon(Icons.videogame_asset),
+              title: Text(
+                playStations[index].name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              subtitle: Text(
+                'Harga Sewa: \$${playStations[index].price} per jam',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Detail PS'),
+                      content: Text('Anda telah memilih ${playStations[index].name}'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
-              child: Text('Pesan Sekarang'),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 }
 
-class OrderScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Pemesanan'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Selamat datang di halaman pemesanan',
-              style: TextStyle(fontSize: 24),
-            ),
-            Image.asset('assets/images/ps cover.jpg'), // Gambar untuk halaman pemesanan
-            ElevatedButton(
-              onPressed: () {
-                // Aksi yang akan dijalankan saat tombol "Pesan Sekarang" ditekan
-                print('Tombol Pesan Sekarang ditekan');
-              },
-              child: Text('Pesan Sekarang'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+class PlayStation {
+  final String name;
+  final double price;
+
+  PlayStation({required this.name, required this.price});
 }
