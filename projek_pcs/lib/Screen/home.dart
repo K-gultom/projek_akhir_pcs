@@ -25,10 +25,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<PlayStation> playStations = [
-    PlayStation(name: 'PS4', price: 50),
-    PlayStation(name: 'PS5', price: 80),
-    PlayStation(name: 'PS4 Pro', price: 60),
-    PlayStation(name: 'PS3', price: 40),
+    PlayStation(name: 'PS4', price: 5000),
+    PlayStation(name: 'PS5', price: 15000),
+    PlayStation(name: 'PS4 Pro', price: 10000),
+    PlayStation(name: 'PS3', price: 5000),
   ];
 
   @override
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               subtitle: Text(
-                'Harga Sewa: \$${playStations[index].price} per jam',
+                'Harga Sewa: Rp${playStations[index].price} per jam',
                 style: TextStyle(fontSize: 16),
               ),
               onTap: () {
