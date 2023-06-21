@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projek_pcs/Screen/home.dart';
 import 'package:projek_pcs/Screen/register.dart';
+import 'package:projek_pcs/main.dart';
 import 'package:projek_pcs/order.dart';
 
 class LoginPage extends StatelessWidget {
@@ -29,7 +31,12 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 24.0),
             ElevatedButton(
               onPressed: () {
-                // Perform login operation
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>HomePage(),
+                  ),
+                );
               },
               child: Text('Login'),
             ),
@@ -58,6 +65,7 @@ class LoginPage extends StatelessWidget {
               child: Text('Order Screen'),
             ),
             // =========================================================
+            
           ],
         ),
       ),
