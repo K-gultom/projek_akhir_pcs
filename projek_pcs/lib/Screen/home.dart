@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/order.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Halaman Home',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: HomePage(),
-//     );
-//   }
-// }
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -26,9 +8,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<PlayStation> playStations = [
-    PlayStation(name: 'PS4', price: 5000),
-    PlayStation(name: 'PS5', price: 15000),
-    PlayStation(name: 'PS4 Pro', price: 10000),
+    PlayStation(name: 'PS4 2 Stik', price: 5000),
+    PlayStation(name: 'PS5 2 Stik', price: 15000),
+    PlayStation(name: 'PS4', price: 10000),
     PlayStation(name: 'PS3', price: 5000),
   ];
 

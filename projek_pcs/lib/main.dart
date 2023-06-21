@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/login.dart';
+import 'package:projek_pcs/order.dart';
+import 'Screen/register.dart';
+import 'Screen/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Rudi PS',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        
-      ),
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      title: 'My App',
+      debugShowCheckedModeBanner: false, 
+      initialRoute: '/login', 
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/home': (context) => OrderPage(),
+        '/register': (context) => RegisterPage(),
+      },
     );
   }
 }
