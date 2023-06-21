@@ -18,11 +18,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
 class _HomePageState extends State<HomePage> {
   final List<PlayStation> playStations = [
     PlayStation(name: 'PS4', price: 50),
@@ -30,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     PlayStation(name: 'PS4 Pro', price: 60),
     PlayStation(name: 'PS3', price: 40),
   ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
