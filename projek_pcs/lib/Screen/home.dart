@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projek_pcs/Screen/order.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,7 +18,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Halaman Home'),
+        title: Text('Halaman Home',
+        style: TextStyle(
+          color: Colors.white,
+        ),),
+        backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
         itemCount: playStations.length,
@@ -36,23 +41,30 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 16),
               ),
               onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Detail PS'),
-                      content: Text('Anda telah memilih ${playStations[index].name}'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('OK'),
-                        ),
-                      ],
-                    );
-                  },
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>OrderPage(),
+                  ),
                 );
+                // showDialog(
+                //   context: context,
+                //   builder: (BuildContext context) {
+                //     return AlertDialog(
+                //       title: Text('Detail PS'),
+                //       content: Text(
+                //           'Anda telah memilih ${playStations[index].name}'),
+                //       actions: [
+                //         TextButton(
+                //           onPressed: () {
+                //             Navigator.of(context).pop();
+                //           },
+                //           child: Text('OK'),
+                //         ),
+                //       ],
+                //     );
+                //   },
+                // );
               },
             ),
           );

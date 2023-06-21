@@ -82,7 +82,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
         backgroundColor: Colors.blue,
       ),
       body: Padding(
@@ -93,9 +92,6 @@ class _LoginPageState extends State<LoginPage> {
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
               ),
               style: TextStyle(fontSize: 16.0),
             ),
@@ -104,8 +100,7 @@ class _LoginPageState extends State<LoginPage> {
               controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+
               ),
               style: TextStyle(fontSize: 16.0),
               obscureText: true,
@@ -127,23 +122,6 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: _goToRegisterPage,
-                  child: Text(
-                    'Register',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),
