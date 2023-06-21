@@ -9,7 +9,9 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Login',
+        style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blue,
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -19,6 +21,11 @@ class LoginPage extends StatelessWidget {
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Username',
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 16.0),
@@ -26,6 +33,11 @@ class LoginPage extends StatelessWidget {
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 24.0),
@@ -53,17 +65,18 @@ class LoginPage extends StatelessWidget {
               child: Text('Register'),
             ),
             // =========================================================
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OrderPage(),
-                  ),
-                );
-              },
-              child: Text('Order Screen'),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => OrderPage(),
+            //       ),
+            //     );
+            
+            //   },
+            //   child: Text('Order Screen'),
+            // ),
             // =========================================================
             
           ],
