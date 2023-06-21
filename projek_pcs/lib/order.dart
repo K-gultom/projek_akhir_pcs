@@ -31,7 +31,7 @@ class _OrderPageState extends State<OrderPage> {
                 height: 200.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/item_image.jpg'),
+                    image: AssetImage('assets/images/ps6.jpeg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -51,15 +51,11 @@ class _OrderPageState extends State<OrderPage> {
                   ),
                   SizedBox(height: 8.0),
                   Text(
-                    'Price: Rp 5.000/jam ',
+                    'Price: Rp 20.000/day ',
                     style: TextStyle(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
-                  Text(
-                    'Durasi Rental (minimal 1 hari):',
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 8.0),
+
                   TextFormField(
                     initialValue: '$_rentalDuration',
                     keyboardType: TextInputType.number,
@@ -70,7 +66,7 @@ class _OrderPageState extends State<OrderPage> {
                     },
                     decoration: InputDecoration(
                       hintText: 'Masukkan Durasi Rental',
-                      labelText: 'Durasi Rental',
+                      labelText: 'Durasi Rental (dalam hari)',
                     ),
                   ),
                   SizedBox(height: 16.0),
