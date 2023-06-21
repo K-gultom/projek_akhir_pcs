@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RentalOrderDetail extends StatelessWidget {
-  final String gameTitle;
+  final String namaPerangkat;
   final String rentalDuration;
   final double totalCost;
 
   RentalOrderDetail({
-    required this.gameTitle,
+    required this.namaPerangkat,
     required this.rentalDuration,
     required this.totalCost,
   });
@@ -23,7 +23,7 @@ class RentalOrderDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Judul Game: $gameTitle',
+              'Perangkat: $namaPerangkat',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
@@ -33,7 +33,7 @@ class RentalOrderDetail extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Total Biaya: \$ $totalCost',
+              'Total Biaya: Rp $totalCost',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
@@ -41,32 +41,12 @@ class RentalOrderDetail extends StatelessWidget {
               onPressed: () {
                 // Tambahkan logika untuk menyimpan pesanan dan melakukan pembayaran di sini
                 // ...
+                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
               },
-              child: Text('Bayar Sekarang'),
+              child: Text('Home'),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rental PS',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: RentalOrderDetail(
-        gameTitle: 'FIFA 2023',
-        rentalDuration: '2 jam',
-        totalCost: 25.0,
       ),
     );
   }

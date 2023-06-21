@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/register.dart';
+import 'package:projek_pcs/order.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -44,6 +45,19 @@ class LoginPage extends StatelessWidget {
               },
               child: Text('Register'),
             ),
+            // =========================================================
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrderPage(),
+                  ),
+                );
+              },
+              child: Text('Order Screen'),
+            ),
+            // =========================================================
           ],
         ),
       ),
