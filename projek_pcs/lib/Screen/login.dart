@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:projek_pcs/home.dart';
 import 'dart:convert';
 import 'register.dart';
-import 'package:projek_pcs/home.dart';
-
-
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,97 +9,103 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TextEditingController _emailController = TextEditingController();
-  // TextEditingController _passwordController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
-  // Future<void> _loginUser() async {
-  //   String email = _emailController.text;
-  //   String password = _passwordController.text;
+  Future<void> _loginUser() async {
+    String email = _emailController.text;
+    String password = _passwordController.text;
 
-  //   var url = Uri.parse('http://192.168.1.21/db_sewa_ps/login.php');
-  //   var response = await http.post(
-  //     url,
-  //     body: {
-  //       'email': email,
-  //       'password': password,
-  //     },
-  //   );
+    var url = Uri.parse('http://192.168.1.21/db_sewa_ps/login.php');
+    var response = await http.post(
+      url,
+      body: {
+        'email': email,
+        'password': password,
+      },
+    );
 
-  //   if (response.statusCode == 200) {
-  //     var data = json.decode(response.body);
-  //     if (data == 'success') {
-  //       // Login berhasil
-  //       Navigator.pushReplacementNamed(context, '/home');
-  //     } else {
-  //       // Login gagal
-  //       showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return AlertDialog(
-  //             title: Text('Login Failed'),
-  //             content: Text('Invalid email or password'),
-  //             actions: [
-  //               TextButton(
-  //                 child: Text('OK'),
-  //                 onPressed: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //               ),
-  //             ],
-  //           );
-  //         },
-  //       );
-  //     }
-  //   } else {
-  //     showDialog(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: Text('Error'),
-  //           content: Text('Failed to connect to server'),
-  //           actions: [
-  //             TextButton(
-  //               child: Text('OK'),
-  //               onPressed: () {
-  //                 Navigator.of(context).pop();
-  //               },
-  //             ),
-  //           ],
-  //         );
-  //       },
-  //     );
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      if (data== 'success') {
+        // Login berhasil
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        // Login gagal
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Login Failed'),
+              content: Text('Invalid email or password'),
+              actions: [
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to connect to server'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
-  // void _goToRegisterPage() {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => RegisterPage()),
-  //   );
-  // }
+  void _goToRegisterPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RegisterPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.blue,
-      //   title: Text('Rudi PS'),
-      // ),
+      appBar: AppBar(
+        title: Text('Login'),
+        backgroundColor: Colors.blue,
+      ),
       body: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              // controller: _emailController,
-              decoration: InputDecoration(labelText: 'Username'),
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.email),
+              ),
               style: TextStyle(fontSize: 16.0),
             ),
             SizedBox(height: 20.0),
             TextFormField(
-              // controller: _passwordController,
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock),
               ),
               style: TextStyle(fontSize: 16.0),
               obscureText: true,
@@ -113,12 +115,23 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  // onPressed: _loginUser,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home');
-                  },
+                  onPressed: _loginUser,
                   child: Text(
                     'Login',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _goToRegisterPage,
+                  child: Text(
+                    'Register',
                     style: TextStyle(fontSize: 18.0),
                   ),
                   style: ElevatedButton.styleFrom(
