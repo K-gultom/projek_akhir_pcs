@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    var url = Uri.parse('http://192.168.1.21/db_sewa_ps/login.php');
+    var url = Uri.parse('http://192.168.1.15/db_sewa_ps/login.php');
     var response = await http.post(
       url,
       body: {
