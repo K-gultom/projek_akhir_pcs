@@ -1,5 +1,6 @@
+Login.php
 <?php
-$db = mysqli_connect('localhost','root','db_sewa_ps',);
+// $db = mysqli_connect('localhost','root','db_sewa_ps',);
 
 $email=$_POST['email'];
 $password=$_POST['password'];

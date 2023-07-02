@@ -41,7 +41,8 @@ class RentalOrderDetail extends StatelessWidget {
               onPressed: () {
                 // Tambahkan logika untuk menyimpan pesanan dan melakukan pembayaran di sini
                 // ...
-                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                // Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                Navigator.pushNamed(context, '/home');
               },
               child: Text('Home'),
             ),
