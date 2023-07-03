@@ -15,10 +15,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _getNotes();
+    _getData();
   }
 
-  Future<void> _getNotes() async {
+  Future<void> _getData() async {
     try {
       final response = await http.get(Uri.parse("http://192.168.1.15/db_sewa_ps/getdata.php"));
 
