@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:projek_pcs/Screen/bottom_navbar.dart';
 import 'package:projek_pcs/Screen/order.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final response = await http.get(Uri.parse("http://192.168.1.7/db_sewa_ps/getdata.php"));
           
-    print(response);
+      print(response);
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -95,29 +96,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
         
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Riwayat Order',
-          ),
-        ],
-        onTap: (int index) {
-          // Handle navigation based on index
-          if (index == 0) {
-            // Navigate to Home screen
-            // Navigator.pushReplacementNamed(context, '/home');
-            Navigator.pushNamed(context, '/home');
-          } else if (index == 1) {
-            // Navigate to Riwayat Order screen
-            // Navigator.pushNamed(context, '/home');
-          }
-        },
-      ),
+      bottomNavigationBar: Bottom_navbar(),
     );
   }
 }

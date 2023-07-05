@@ -25,7 +25,7 @@ class Bottom_navbar extends StatelessWidget {
     // Handle navigation based on index
     if (index == 0) {
       // Navigate to Home screen
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
     } else if (index == 1) {
       // Navigate to Riwayat Order screen
       Navigator.pushNamed(context, '/riwayat_order');
