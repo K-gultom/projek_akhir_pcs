@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/login.dart';
-import 'package:projek_pcs/order.dart';
 import 'Screen/register.dart';
 import 'Screen/home.dart';
 
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/register': (context) => RegisterPage(),
-        // '/riwayat': (context) => RegisterPage(),
       },
     );
   }

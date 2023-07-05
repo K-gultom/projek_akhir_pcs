@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/detailpesanan.dart';
 
 class OrderPage extends StatefulWidget {
+  final String id;
+
+  OrderPage({Key? key, required this.id}) : super(key: key);
+  
   @override
   _OrderPageState createState() => _OrderPageState();
 }
@@ -43,13 +47,13 @@ class _OrderPageState extends State<OrderPage> {
                     style: TextStyle(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
-
                   TextFormField(
                     initialValue: '$_rentalDuration',
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        _rentalDuration = int.tryParse(value) ?? _rentalDuration;
+                        _rentalDuration =
+                            int.tryParse(value) ?? _rentalDuration;
                       });
                     },
                     decoration: InputDecoration(
@@ -79,10 +83,14 @@ class _OrderPageState extends State<OrderPage> {
                   ElevatedButton(
                     onPressed: () {
                       // Perform rent operation
-                       Navigator.push(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RentalOrderDetail(namaPerangkat: 'PS 6', rentalDuration: '5', totalCost: 100.000, ),
+                          builder: (context) => RentalOrderDetail(
+                            namaPerangkat: 'PS 6',
+                            rentalDuration: '5',
+                            totalCost: 100.000,
+                          ),
                         ),
                       );
                     },

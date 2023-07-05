@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "projek_pcs",
+            "cwd": "projek_pcs",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "projek_pcs (profile mode)",
+            "cwd": "projek_pcs",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "projek_pcs (release mode)",
+            "cwd": "projek_pcs",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

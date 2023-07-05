@@ -23,11 +23,11 @@ class _RegisterPageState extends State<RegisterPage> {
     String password = _passwordController.text;
 
     if (_formKey.currentState!.validate()) {
-      var url = Uri.parse('http://192.168.1.15/db_sewa_ps/register.php');
+      var url = Uri.parse('http://192.168.3.16/db_sewa_ps/register.php');
 
       // Check if email is already registered
       var emailCheckResponse = await http.post(
-        Uri.parse('http://192.168.1.15/db_sewa_ps/check_email.php'),
+        Uri.parse('http://192.168.3.16/db_sewa_ps/check_email.php'),
         body: {'email': email},
       );
 
@@ -41,23 +41,27 @@ class _RegisterPageState extends State<RegisterPage> {
         return; // Stop the registration process
       }
 
-      // Continue with the registration process if email is not registered
-      var response = await http.post(
-        url,
-        body: {
-          'name': name,
-          'email': email,
-          'address': address,
-          'phone': phone,
-          'password': password,
-        },
-      );
+      try {
+          // Continue with the registration process if email is not registered
+        var response = await http.post(
+          url,
+          body: {
+            'name': name,
+            'email': email,
+            'address': address,
+            'phone': phone,
+            'password': password,
+          },
+        );
 
-      if (response.statusCode == 200) {
-        print('Registration successful');
-        Navigator.pushReplacementNamed(context, '/login');
-      } else {
-        print('Registration failed: ${response.body}');
+        if (response.statusCode == 200) {
+          print('Registration successful');
+          Navigator.pushReplacementNamed(context, '/login');
+        } else {
+          print('Registration failed: ${response.body}');
+        }
+      } catch (e) {
+        print(e);
       }
     }
   }
