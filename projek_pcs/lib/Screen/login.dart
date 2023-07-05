@@ -28,8 +28,6 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
       if (data['status'] == 'success') {
-        // Login berhasil
-        Navigator.pushReplacementNamed(context, '/home');
       } else {
         // Login gagal
         showDialog(
@@ -115,7 +113,10 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: _loginUser,
+                  // onPressed: _loginUser,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 18.0),

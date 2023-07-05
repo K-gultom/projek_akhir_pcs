@@ -25,18 +25,18 @@ class _OrderPageState extends State<OrderPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(
-              elevation: 2.0,
-              child: Container(
-                height: 200.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/ps6.jpeg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+            // Card(
+            //   elevation: 2.0,
+            //   child: Container(
+            //     height: 200.0,
+            //     decoration: BoxDecoration(
+            //       image: DecorationImage(
+            //         image: AssetImage('assets/images/ps6.jpeg'),
+            //         fit: BoxFit.cover,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

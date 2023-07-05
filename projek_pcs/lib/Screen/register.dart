@@ -7,6 +7,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
@@ -22,45 +23,45 @@ class _RegisterPageState extends State<RegisterPage> {
     String phone = _phoneController.text;
     String password = _passwordController.text;
 
-    if (_formKey.currentState!.validate()) {
-      var url = Uri.parse('http://192.168.94.203/db_sewa_ps/register.php');
-
-     
-      var emailCheckResponse = await http.post(
-        Uri.parse('http://192.168.94.203/db_sewa_ps/check_email.php'),
-        body: {'email': email},
-      );
-
-      if (emailCheckResponse.statusCode == 200) {
-        if (emailCheckResponse.body == 'exists') {
-          print('Email already registered');
-          return;
-        }
-      } else {
-        print('Email check failed: ${emailCheckResponse.body}');
-        return; 
-      }
+      if (_formKey.currentState!.validate()) {
+        var url = Uri.parse('http://192.168.94.203/db_sewa_ps/register.php');
 
       
-      var response = await http.post(
-        url,
-        body: {
-          'name': name,
-          'email': email,
-          'address': address,
-          'phone': phone,
-          'password': password,
-        },
-      );
+        var emailCheckResponse = await http.post(
+          Uri.parse('http://192.168.3.16/db_sewa_ps/check_email.php'),
+          body: {'email': email},
+        );
 
-      if (response.statusCode == 200) {
-        print('Registration successful');
-        Navigator.pushReplacementNamed(context, '/login');
-      } else {
-        print('Registration failed: ${response.body}');
-      }
+        if (emailCheckResponse.statusCode == 200) {
+          if (emailCheckResponse.body == 'exists') {
+            print('Email already registered');
+            return;
+          }
+        } else {
+          print('Email check failed: ${emailCheckResponse.body}');
+          return; 
+        }
+
+        var response = await http.post(
+          url,
+          body: {
+            'name': name,
+            'email': email,
+            'address': address,
+            'phone': phone,
+            'password': password,
+          },
+        );
+
+        if (response.statusCode == 200) {
+          print('Registration successful');
+          Navigator.pushReplacementNamed(context, '/login');
+        } else {
+          print('Registration failed: ${response.body}');
+        }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
