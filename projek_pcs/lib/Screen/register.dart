@@ -28,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       
         var emailCheckResponse = await http.post(
-          Uri.parse('http://192.168.3.16/db_sewa_ps/check_email.php'),
+          Uri.parse('http://192.168.94.203/db_sewa_ps/check_email.php'),
           body: {'email': email},
         );
 
