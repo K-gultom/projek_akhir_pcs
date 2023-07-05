@@ -23,25 +23,25 @@ class _RegisterPageState extends State<RegisterPage> {
     String password = _passwordController.text;
 
     if (_formKey.currentState!.validate()) {
-      var url = Uri.parse('http://192.168.1.15/db_sewa_ps/register.php');
+      var url = Uri.parse('http://192.168.94.203/db_sewa_ps/register.php');
 
-      // Check if email is already registered
+     
       var emailCheckResponse = await http.post(
-        Uri.parse('http://192.168.1.15/db_sewa_ps/check_email.php'),
+        Uri.parse('http://192.168.94.203/db_sewa_ps/check_email.php'),
         body: {'email': email},
       );
 
       if (emailCheckResponse.statusCode == 200) {
         if (emailCheckResponse.body == 'exists') {
           print('Email already registered');
-          return; // Stop the registration process
+          return;
         }
       } else {
         print('Email check failed: ${emailCheckResponse.body}');
-        return; // Stop the registration process
+        return; 
       }
 
-      // Continue with the registration process if email is not registered
+      
       var response = await http.post(
         url,
         body: {

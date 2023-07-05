@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    var url = Uri.parse('http://192.168.1.15/db_sewa_ps/login.php');
+    var url = Uri.parse('http://192.168.94.203/db_sewa_ps/login.php');
     var response = await http.post(
       url,
       body: {
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
-      if (data== 'success') {
+      if (data['status'] == 'success') {
         // Login berhasil
         Navigator.pushReplacementNamed(context, '/home');
       } else {
