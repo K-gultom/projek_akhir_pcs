@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _getData() async {
     try {
-      final response = await http.get(Uri.parse("http://192.168.4.128:8080/db_sewa_ps/getdata.php"));
+      final response = await http.get(Uri.parse("http://192.168.1.7/db_sewa_ps/getdata.php"));
           
-    print(response);
+      print(response);
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             ),
         
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: [ 
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
