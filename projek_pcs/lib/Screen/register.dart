@@ -7,6 +7,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
@@ -22,36 +23,25 @@ class _RegisterPageState extends State<RegisterPage> {
     String phone = _phoneController.text;
     String password = _passwordController.text;
 
-    if (_formKey.currentState!.validate()) {
-<<<<<<< HEAD
-      var url = Uri.parse('http://192.168.3.16/db_sewa_ps/register.php');
-=======
-      var url = Uri.parse('http://192.168.94.203/db_sewa_ps/register.php');
->>>>>>> 9c5351291589dcaed1cb08e92cb3d3063ee34be4
+      if (_formKey.currentState!.validate()) {
+        var url = Uri.parse('http://192.168.94.203/db_sewa_ps/register.php');
 
-     
-      var emailCheckResponse = await http.post(
-<<<<<<< HEAD
-        Uri.parse('http://192.168.3.16/db_sewa_ps/check_email.php'),
-=======
-        Uri.parse('http://192.168.94.203/db_sewa_ps/check_email.php'),
->>>>>>> 9c5351291589dcaed1cb08e92cb3d3063ee34be4
-        body: {'email': email},
-      );
+      
+        var emailCheckResponse = await http.post(
+          Uri.parse('http://192.168.3.16/db_sewa_ps/check_email.php'),
+          body: {'email': email},
+        );
 
-      if (emailCheckResponse.statusCode == 200) {
-        if (emailCheckResponse.body == 'exists') {
-          print('Email already registered');
-          return;
+        if (emailCheckResponse.statusCode == 200) {
+          if (emailCheckResponse.body == 'exists') {
+            print('Email already registered');
+            return;
+          }
+        } else {
+          print('Email check failed: ${emailCheckResponse.body}');
+          return; 
         }
-      } else {
-        print('Email check failed: ${emailCheckResponse.body}');
-        return; 
-      }
 
-<<<<<<< HEAD
-      try {
-          // Continue with the registration process if email is not registered
         var response = await http.post(
           url,
           body: {
@@ -62,19 +52,6 @@ class _RegisterPageState extends State<RegisterPage> {
             'password': password,
           },
         );
-=======
-      
-      var response = await http.post(
-        url,
-        body: {
-          'name': name,
-          'email': email,
-          'address': address,
-          'phone': phone,
-          'password': password,
-        },
-      );
->>>>>>> 9c5351291589dcaed1cb08e92cb3d3063ee34be4
 
         if (response.statusCode == 200) {
           print('Registration successful');
@@ -82,11 +59,9 @@ class _RegisterPageState extends State<RegisterPage> {
         } else {
           print('Registration failed: ${response.body}');
         }
-      } catch (e) {
-        print(e);
-      }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

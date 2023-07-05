@@ -27,13 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
-<<<<<<< HEAD
-      if (data == 'success') {
-=======
       if (data['status'] == 'success') {
->>>>>>> 9c5351291589dcaed1cb08e92cb3d3063ee34be4
-        // Login berhasil
-        Navigator.pushReplacementNamed(context, '/home');
       } else {
         // Login gagal
         showDialog(
