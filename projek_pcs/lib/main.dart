@@ -9,8 +9,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  get totalHarga => totalHarga;
+
+
   @override
   Widget build(BuildContext context) {
+    var lamaSewa;
     return MaterialApp(
       title: 'My App',
       debugShowCheckedModeBanner: false, 
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/register': (context) => RegisterPage(),
-        '/detail_pesanan': (context) => HomePage (),
+        '/detail_pesanan': (context) => DetailPesanan (idProduk: 'idProduk', jaminan: 'jaminan', lamaSewa: lamaSewa , namaCustomer: 'namaCustomer', totalHarga: totalHarga, namaProduk: '',),
       },
     );
   }

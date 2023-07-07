@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:projek_pcs/Screen/detailpesanan.dart';
 
 class OrderPage extends StatefulWidget {
   final String id;
@@ -29,38 +30,50 @@ class _OrderPageState extends State<OrderPage> {
     return 0.0;
   }
 
-  Future<void> sendDataToMySQL() async {
-    if (_formKey.currentState!.validate()) {
-      String idProduk = widget.id;
-      String namaCustomer = _namaController.text;
-      int lamaSewa = _selectedLamaSewa!;
-      String jaminan = _selectedJaminan;
-      double totalHarga = calculateTotalHarga();
+Future<void> sendDataToMySQL() async {
+  if (_formKey.currentState!.validate()) {
+    String idProduk = widget.id;
+    String namaCustomer = _namaController.text;
+    int lamaSewa = _selectedLamaSewa!;
+    String jaminan = _selectedJaminan;
+    double totalHarga = calculateTotalHarga();
 
-      try {
-        final response = await http.post(
-          Uri.parse('http://192.168.1.11/db_sewa_ps/pesanan.php'),
-          body: {
-            'id': idProduk,
-            'id_produk': widget.id,
-            'nama_customer': namaCustomer,
-            'lama_sewa': lamaSewa.toString(),
-            'jaminan': jaminan,
-            'total_harga': totalHarga.toString(),
-          },
+    try {
+      final response = await http.post(
+        Uri.parse('http://192.168.1.11/db_sewa_ps/pesanan.php'),
+        body: {
+          'id': idProduk,
+          'id_produk': widget.id,
+          'nama_customer': namaCustomer,
+          'lama_sewa': lamaSewa.toString(),
+          'jaminan': jaminan,
+          'total_harga': totalHarga.toString(),
+        },
+      );
+
+      if (response.statusCode == 200) {
+        print('Data sent to MySQL successfully');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPesanan(
+              idProduk: idProduk,
+              namaProduk: widget.namaProduk,
+              namaCustomer: namaCustomer,
+              lamaSewa: lamaSewa,
+              jaminan: jaminan,
+              totalHarga: totalHarga,
+            ),
+          ),
         );
-
-        if (response.statusCode == 200) {
-          print('Data sent to MySQL successfully');
-          Navigator.pushNamed(context, '/detail_pesanan');
-        } else {
-          print('Error sending data to MySQL. Status code: ${response.statusCode}');
-        }
-      } catch (error) {
-        print('Error sending data to MySQL: $error');
+      } else {
+        print('Error sending data to MySQL. Status code: ${response.statusCode}');
       }
+    } catch (error) {
+      print('Error sending data to MySQL: $error');
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
