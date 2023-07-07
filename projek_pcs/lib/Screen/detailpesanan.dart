@@ -1,61 +1,50 @@
 import 'package:flutter/material.dart';
 
-class DetailPesanan extends StatelessWidget {
-  final String id;
-  final String namaProduk;
-  final String namaCustomer;
-  final int lamaSewa;
-  final String jaminan;
-  final double totalHarga;
+class RentalOrderDetail extends StatelessWidget {
+  final String namaPerangkat;
+  final String rentalDuration;
+  final double totalCost;
 
-  DetailPesanan({
-    required this.id,
-    required this.namaProduk,
-    required this.namaCustomer,
-    required this.lamaSewa,
-    required this.jaminan,
-    required this.totalHarga,
+  RentalOrderDetail({
+    required this.namaPerangkat,
+    required this.rentalDuration,
+    required this.totalCost,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail Pesanan'),
+        title: Text('Detail Pesanan Sewa'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'ID Pesanan: $id',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              'Perangkat: $namaPerangkat',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 10),
             Text(
-              'Nama Produk: $namaProduk',
-              style: TextStyle(fontSize: 16.0),
+              'Durasi Sewa: $rentalDuration',
+              style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 10),
             Text(
-              'Nama Customer: $namaCustomer',
-              style: TextStyle(fontSize: 16.0),
+              'Total Biaya: Rp $totalCost',
+              style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 10.0),
-            Text(
-              'Lama Sewa: $lamaSewa hari',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'Jaminan: $jaminan',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'Total Harga: Rp $totalHarga',
-              style: TextStyle(fontSize: 16.0),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Tambahkan logika untuk menyimpan pesanan dan melakukan pembayaran di sini
+                // ...
+                // Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                Navigator.pushNamed(context, '/home');
+              },
+              child: Text('Home'),
             ),
           ],
         ),
