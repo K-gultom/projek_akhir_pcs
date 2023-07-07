@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projek_pcs/Screen/login.dart';
 import 'Screen/register.dart';
 import 'Screen/home.dart';
-import 'Screen/detailpesanan.dart';
 
 void main() {
   runApp(MyApp());
