@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _getData() async {
     try {
-      final response = await http.get(Uri.parse("http://192.168.1.7/db_sewa_ps/getdata.php"));
+      final response = await http.get(Uri.parse("http://192.168.1.11/db_sewa_ps/getdata.php"));
           
       print(response);
 
@@ -75,7 +75,9 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => OrderPage(
-                          id: _get[index]['id'],
+                        id: _get[index]['id'],
+                          namaProduk: _get[index]['nama_produk'],
+                          harga: _get[index]['harga'],
                         ),
                       ),
                     );
