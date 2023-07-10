@@ -102,7 +102,8 @@ class _RiwayatOrderState extends State<RiwayatOrder> {
                 ),
               ),
             ),
-bottomNavigationBar: BottomNavigationBar(
+            
+            bottomNavigationBar: BottomNavigationBar(
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
@@ -133,8 +134,6 @@ bottomNavigationBar: BottomNavigationBar(
                 }
               },
             ),
-
-      
       );
   }
 }

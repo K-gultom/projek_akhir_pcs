@@ -3,6 +3,7 @@ import 'package:projek_pcs/Screen/login.dart';
 import 'Screen/register.dart';
 import 'Screen/detailpesanan.dart';
 import 'Screen/home.dart';
+import 'Screen/riwayatorder.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,8 +24,10 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/register': (context) => RegisterPage(),
+        '/riwayatorder' : (context) => RiwayatOrder(),
         '/detail_pesanan': (context) => DetailPesanan (idProduk: 'idProduk', jaminan: 'jaminan', lamaSewa: lamaSewa , namaCustomer: 'namaCustomer', totalHarga: totalHarga, namaProduk: '',),
       },
+
     );
   }
 }
