@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushReplacementNamed(context, '/home');
           } else if (index == 1) {
             // Navigate to Riwayat Order screen
-            Navigator.pushNamed(context, '/riwayat_order');
+            Navigator.pushNamed(context, '/riwayatorder');
           } else if (index == 2) {
             // Perform logout
             Navigator.pushReplacementNamed(context, '/login');
